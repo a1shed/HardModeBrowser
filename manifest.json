@@ -6,9 +6,9 @@
   "permissions": ["scripting", "tabs", "alarms"],
   "background": {
     "service_worker": "background.js"
-  }
+  },
   "action": {
     "default_title": "Jumpscare"
-  }
+  },
   "host_permissions": ["<all_urls>"]
 }
