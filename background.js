@@ -61,7 +61,7 @@ function showJumpscare() {
     if (document.fullscreenElement) {
       document.exitFullscreen().catch(() => {});
     }
-  }, 5000);
+  }, 2500);
 }
 
 
