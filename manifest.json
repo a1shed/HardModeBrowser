@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "HardModeDifficulty",
   "version": "1.0",
-  "description":"You can't complete any daily task at all!"
+  "description":"You can't complete any daily task at all!",
   "permissions": ["scripting", "tabs", "alarms"],
   "background": {
     "service_worker": "background.js"
