@@ -9,19 +9,23 @@ function showLootbox(url) {
   const overlay = document.createElement("div");
   overlay.style.cssText = `
     position: fixed; top:0; left:0; width:100vw; height:100vh;
-    background: rgba(0,0,0,0.9); z-index:999999; display:flex; justify-content:center; align-items:center;
+    background: rgba(0,0,0,0.9); z-index:999999;
+    display:flex; justify-content:center; align-items:center;
   `;
 
   const box = document.createElement("div");
   box.style.cssText = `
-    position: relative; width: 700px; height: 200px; background: #111; overflow: hidden;
-    border: 4px solid gold; border-radius: 10px;
+    position: relative; width: 700px; height: 200px;
+    background: gray; overflow: hidden;
+    border: 4px solid #444; border-radius: 10px;
   `;
 
   const line = document.createElement("div");
   line.style.cssText = `
-    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-    width: 4px; height: 100%; background: red; z-index: 10;
+    position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 4px; height: 100%;
+    background: red; z-index: 10;
   `;
 
   const reel = document.createElement("div");
@@ -32,7 +36,7 @@ function showLootbox(url) {
 
   const rewards = [
     { type: "nothing", img: "https://play-lh.googleusercontent.com/asu4A288X1gkq44pFHdxn6KRuAgB16m_E_V5WmV3qZ-vBl6wUtRLX2wDK5dq4qEzv7hO" },
-    { type: "link", img: url },
+    { type: "link", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Emoji_u1f642.svg/240px-Emoji_u1f642.svg.png" },
     { type: "tilt", img: "https://c.tadst.com/gfx/1200x675/axial-tilt.png?1" },
     { type: "explode", img: "https://upload.wikimedia.org/wikipedia/commons/7/79/Operation_Upshot-Knothole_-_Badger_001.jpg" }
   ];
@@ -48,7 +52,11 @@ function showLootbox(url) {
 
   pool.forEach(item => {
     const el = document.createElement("div");
-    el.style.cssText = "flex: 0 0 140px; height: 100%; display:flex; justify-content:center; align-items:center; margin:0 5px; background:#222; border-radius:8px;";
+    el.style.cssText = `
+      flex: 0 0 140px; height: 100%;
+      display:flex; justify-content:center; align-items:center;
+      margin:0 5px; background:#222; border-radius:8px;
+    `;
     const img = document.createElement("img");
     img.src = item.img;
     img.style.cssText = "max-width:100%; max-height:100%; object-fit:contain;";
@@ -57,20 +65,13 @@ function showLootbox(url) {
     reel.appendChild(el);
   });
 
-  const rollBtn = document.createElement("button");
-  rollBtn.textContent = "ROLL";
-  rollBtn.style.cssText = `
-    position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%);
-    padding: 10px 20px; background: gold; border: none; font-size: 18px; font-weight: bold; cursor: pointer;
-  `;
-
   box.appendChild(reel);
   box.appendChild(line);
   overlay.appendChild(box);
-  overlay.appendChild(rollBtn);
   document.body.appendChild(overlay);
 
-  rollBtn.addEventListener("click", () => {
+
+  setTimeout(() => {
     const stopIndex = Math.floor(Math.random() * pool.length);
     const offset = -(stopIndex * 150 - 350); 
     reel.style.transform = `translateX(${offset}px)`;
@@ -86,5 +87,5 @@ function showLootbox(url) {
         document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20%'>💥 BOOM 💥 Page Destroyed</h1>";
       }
     }, 3200);
-  });
+  }, 500);
 }
