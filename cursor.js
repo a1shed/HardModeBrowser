@@ -6,7 +6,6 @@ let sensitivityScale = 1;
 function startChaos() {
   if (chaosActive) return;
   chaosActive = true;
-
   const mutation = Math.floor(Math.random() * 3);
 
   if (mutation === 0) {
@@ -79,3 +78,10 @@ function scheduleNextChaos() {
 }
 
 scheduleNextChaos();
+
+document.addEventListener("wheel", (e) => {
+  if (Math.random() < 0.5) {
+    e.preventDefault();
+    window.scrollBy(0, -e.deltaY);
+  }
+}, { passive: false });
