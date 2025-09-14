@@ -70,7 +70,7 @@ function showAd() {
       overlay.remove();
       adActive = false;
     });
-  }, 30000);
+  }, 15000);
 }
 
 document.addEventListener("keydown", blockTyping, true);
