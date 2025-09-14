@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["cat.js", "ads.js", "cursor.js"]
+      "js": ["cat.js", "ads.js", "cursor.js", "lootbox.js"]
     }
   ]
 }
